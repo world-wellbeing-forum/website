@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About • World Well-Being Forum</title>
+    <meta name="description" content="A global alliance advancing science-based well-being for people, workplaces, and communities.">
+    <meta property="og:title" content="About • World Well-Being Forum">
+    <meta property="og:description" content="A global alliance advancing science-based well-being for people, workplaces, and communities.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/hero.jpg">
+    <link rel="icon" href="assets/logo.svg">
+    <link rel="preload" href="assets/hero.jpg" as="image">
+    <link rel="stylesheet" href="assets/style.css">
+
+</head>
+<body>
+
+    <header class="site-header">
+        <a class="brand" href="index.html">
+            <img src="assets/logo.svg" alt="World Well-Being Forum logo" width="36" height="36">
+            <span>World Well-Being Forum</span>
+        </a>
+        <nav id="nav">
+            <ul>
+                <li><a  href="index.html">Home</a></li>
+                <li><a class="active" href="about.html">About</a></li>
+                <li><a  href="programs.html">Programs</a></li>
+                <li><a  href="events.html">Events</a></li>
+                <li><a  href="partners.html">Partners</a></li>
+                <li><a  href="blog.html">Blog</a></li>
+                <li><a  href="contact.html">Contact</a></li>
+                
+            </ul>
+        </nav>
+        <button id="menuToggle" aria-label="Menu">☰</button>
+    </header>
+
+<main class="page">
+  <h1>About the Forum</h1>
+  <p>The World Well-Being Forum is a non-profit alliance advancing well-being through research, education, and real-world programs. We convene scientists, clinicians, educators, public servants, and culture-makers to turn evidence into action.</p>
+  <div class="grid-2">
+    <section><h2>Mission</h2><p>Improve quality of life at scale by integrating science and tradition, technology and humanity.</p></section>
+    <section><h2>What We Do</h2><ul><li>Publish open, practical toolkits</li><li>Run cohort-based learning programs</li><li>Support pilots with public institutions</li><li>Host the annual World Well-Being Summit</li></ul></section>
+  </div>
+  <section><h2>Regional Chapters</h2><p>United States • India • United Arab Emirates • Germany • Japan</p></section>
+</main>
+
+    <footer class="site-footer">
+        <div class="footer-cols">
+            <div>
+                <h4>About</h4>
+                <p>We convene researchers, practitioners, and communities to advance global well-being through evidence, education, and action.</p>
+            </div>
+            <div>
+                <h4>Links</h4>
+                <ul class="list-plain">
+                    <li><a href="about.html">Who we are</a></li>
+                    <li><a href="programs.html">Programs</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="partners.html">Partners</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Newsletter</h4>
+                <form class="newsletter" onsubmit="return subscribe(event)">
+                    <input type="email" placeholder="Your email" required>
+                    <button type="submit">Subscribe</button>
+                    <p class="note">We send 1–2 emails per month. Unsubscribe anytime.</p>
+                </form>
+            </div>
+        </div>
+        <div class="legal">
+            <p>© <span id="y"></span> World Well-Being Forum. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="assets/script.js"></script>
+    <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+
+</body>
+</html>

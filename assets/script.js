@@ -9,11 +9,7 @@ document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date
 const interest = new URLSearchParams(location.search).get('interest');
 const select = document.querySelector('select[name="interest"]');
 if (select && [...select.options].some(option => option.value === interest)) select.value = interest;
-// Preserve Netlify Forms on the existing host; other static hosts have no form backend.
-const preview = !location.hostname.endsWith('.netlify.app');
-document.querySelectorAll('form[data-netlify]').forEach(form => {
- if (preview) form.querySelector('.form-status').textContent = 'Online submissions are not available yet. Please check back for contact details.';
- form.addEventListener('submit', event => {
-  if (preview) { event.preventDefault(); form.querySelector('.form-status').textContent = 'Your message has not been sent. Online submissions are not available yet.'; }
- });
+// Static hosting has no form endpoint. Do not transmit entered details.
+document.querySelectorAll('form').forEach(form => {
+ form.addEventListener('submit', event => event.preventDefault());
 });

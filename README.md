@@ -55,7 +55,7 @@ Semantic landmarks, skip navigation, keyboard access, visible focus indicators, 
 
 ## Forms and donations
 
-The existing Netlify Forms integration is retained, and the previous newsletter acknowledgement-only interaction has been replaced with a real Netlify form declaration. Only netlify.app hosts permit form submission by default. Enable form detection and recipient notifications there, then verify actual receipt. A custom Netlify domain requires explicitly updating the host guard. GitHub Pages, Sites and local previews do not provide Netlify Forms: submissions are intercepted and clearly marked unavailable, never acknowledged as sent. Connect a functioning backend before launching on another host. Donation links lead to a transparent support enquiry; no payment processor or verified donation destination was supplied.
+GitHub Pages is the static hosting provider. There is no form or payment backend. Submission buttons are disabled in HTML, and an additional JavaScript guard prevents form submissions. No contact data is sent or acknowledged as received. Connect a verified service before enabling enquiries or newsletter subscriptions. Donation links lead to a transparent support enquiry; no payment processor or verified donation destination was supplied.
 
 ## Images and brand
 

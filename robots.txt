@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: /sitemap.xml
+Sitemap: https://world-well-being-forum.cherry-tune-0071.chatgpt.site/sitemap.xml

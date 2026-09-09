@@ -55,7 +55,7 @@ Semantic landmarks, skip navigation, keyboard access, visible focus indicators, 
 
 ## Forms and donations
 
-The existing Netlify Forms integration is retained, and the previous newsletter acknowledgement-only interaction has been replaced with a real Netlify form declaration. Enable form detection and recipient notifications on the existing Netlify host, then verify actual receipt. Sites and local previews do not provide Netlify Forms: submissions are intercepted and clearly marked unavailable, never acknowledged as sent. Connect a functioning backend before launching on another host. Donation links lead to a transparent support enquiry; no payment processor or verified donation destination was supplied.
+The existing Netlify Forms integration is retained, and the previous newsletter acknowledgement-only interaction has been replaced with a real Netlify form declaration. Only netlify.app hosts permit form submission by default. Enable form detection and recipient notifications there, then verify actual receipt. A custom Netlify domain requires explicitly updating the host guard. GitHub Pages, Sites and local previews do not provide Netlify Forms: submissions are intercepted and clearly marked unavailable, never acknowledged as sent. Connect a functioning backend before launching on another host. Donation links lead to a transparent support enquiry; no payment processor or verified donation destination was supplied.
 
 ## Images and brand
 
@@ -69,6 +69,23 @@ The existing `hero.jpg` social-preview image and metadata were retained. Replace
 
 ## Deployment
 
-Run the build, verify responsive layouts and accessibility, check metadata and links, confirm authentic imagery, validate founder details and current program status, and confirm working contact and donation destinations. Deploy the contents of `dist/`. The generated sitemap uses the private Sites origin; update it if moving to a public domain.
+Run the build, verify responsive layouts and accessibility, check metadata and links, confirm authentic imagery, validate founder details and current program status, and confirm working contact and donation destinations. Deploy the contents of `dist/`. The generated sitemap uses SITE_URL; the Pages workflow supplies the configured GitHub Pages URL.
 
 © World Well-Being Forum. All rights reserved, except third-party imagery under its respective license.
+
+## GitHub Pages and pull requests
+
+The site remains entirely static. `.github/workflows/pages.yml` checks pull requests and automatically publishes pushes to `main` using GitHub Pages Actions. Pull requests never deploy and have read-only repository permissions. Only the deployment job receives Pages write and OIDC permissions.
+
+The intended Pages address is https://world-wellbeing-forum.github.io/website/. Enable **Settings → Pages → Source → GitHub Actions**. Merge the pull request to trigger the first deployment; later merges deploy automatically. The workflow can also be run manually on `main`.
+
+The build rewrites navigation, images, CSS background URLs and form actions for the configured base path. It also generates a matching sitemap, robots file and `.nojekyll`. Private Sites configuration and repository files are excluded from the published artifact.
+
+```sh
+python3 scripts/check_build.py
+BASE_PATH=/website SITE_URL=https://world-wellbeing-forum.github.io/website python3 scripts/build.py
+```
+
+`check_build.py` exercises both root hosting and `/website` hosting and checks every emitted local navigation link and referenced asset. For local preview at `/`, run the normal build again. For a custom domain, the workflow uses the Pages configuration to select the URL and path automatically.
+
+GitHub Pages has no form or payment backend. Forms clearly report that online submissions are unavailable. Donations remain an informational support enquiry until a verified destination is supplied. The private Sites deployment is retained separately; this workflow does not update or delete it.

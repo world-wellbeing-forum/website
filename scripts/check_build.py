@@ -21,9 +21,9 @@ for base in ['', '/website']:
  dist = root / 'dist'
  for file in dist.rglob('*'):
   if file.suffix == '.html':
-   parser = Links(); parser.feed(file.read_text()); links = parser.links
+   parser = Links(); parser.feed(file.read_text(encoding='utf-8')); links = parser.links
   elif file.suffix == '.css':
-   links = re.findall(r'url\([\"\']?([^\)\"\']+)', file.read_text())
+   links = re.findall(r'url\([\"\']?([^\)\"\']+)', file.read_text(encoding='utf-8'))
   else: continue
   for link in links:
    url = urlsplit(link)

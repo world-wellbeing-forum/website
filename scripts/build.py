@@ -6,7 +6,7 @@ import shutil, os, re
 from xml.sax.saxutils import escape
 root=Path(__file__).resolve().parents[1]
 nl=chr(10)
-routes=['about','wellbeing','our-work','health','environment','humanitarian','education-technology','global','founder','get-involved','contact','programs']
+routes=['about','wellbeing','our-work','health','environment','humanitarian','education-technology','global','founder','get-involved','contact','programs','books']
 for route in routes:
     source=root/(route+'.html')
     if not source.is_file(): raise SystemExit(f'Missing page source: {source}')

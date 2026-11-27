@@ -12,3 +12,4 @@
 @media(max-width:760px){.hero-v2{min-height:0}.hero-grid{padding-block:60px;gap:32px}.hero-card{grid-template-columns:96px 1fr}.hero-card img{width:96px;height:120px}.topics{grid-template-columns:1fr}.dimension-grid.compact{grid-template-columns:1fr 1fr}.testimonial{padding-block:56px}}
 @media(max-width:420px){.dimension-grid.compact{grid-template-columns:1fr}}
 @media(max-width:760px){.hero-v2 .hero-shade{background:linear-gradient(180deg,#0b3029f0,#123c32d9)}}
+.story{grid-template-columns:repeat(4,1fr)}@media(max-width:1000px){.story{grid-template-columns:1fr 1fr}}@media(max-width:760px){.story{grid-template-columns:1fr}}

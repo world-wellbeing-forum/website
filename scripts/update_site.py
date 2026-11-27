@@ -6,7 +6,7 @@ root = Path(__file__).resolve().parents[1]
 NAV = ('<nav id="navigation" aria-label="Main navigation"><a href="/about/">About</a><a href="/wellbeing/">Wellbeing</a>'
        '<a href="/programs/">Programmes</a><a href="/events.html">Events</a><a href="/books/">Books</a>'
        '<a href="/founder/">Dr Sadhna Dixit</a><a href="/blog.html">Journal</a><a class="nav-cta" href="/contact/">Enquire</a></nav>')
-PORTRAIT = '<img class="portrait" src="/assets/img/founder-portrait.jpg" alt="Dr Sadhna Dixit" width="520" height="626">'
+PORTRAIT = '<img class="portrait" src="/assets/img/sadhna-portrait.jpg" alt="Dr Sadhna Dixit" width="720" height="960">'
 
 for f in root.glob('*.html'):
     s = f.read_text(encoding='utf-8')
@@ -24,7 +24,7 @@ books = re.sub(r'<meta name="description" content="[^"]*">',
 books = re.sub(r'<meta property="og:title" content="[^"]*">', '<meta property="og:title" content="Books | World Wellbeing Forum">', books, count=1)
 books = re.sub(r'<meta property="og:description" content="[^"]*">', '<meta property="og:description" content="Books on wellbeing and naturopathy by Dr Sadhna Dixit.">', books, count=1)
 main = '''<main id="main"><section class="page-hero"><div class="wrap"><p class="eyebrow">BOOKS</p><h1>Books by Dr Sadhna Dixit</h1><p class="lead">Dr Sadhna Dixit has written five books on wellbeing and naturopathy, drawing on 25 years of yoga practice and her work as a qualified naturopath.</p></div></section>
-<section class="section wrap founder-bio"><img class="portrait" src="/assets/img/founder-portrait.jpg" alt="Dr Sadhna Dixit" width="520" height="626" loading="lazy"><div><p class="eyebrow">FEATURED</p><h2>A Cure to Cancer by Naturopathy</h2><p>One of five books by Sadhna on wellbeing and naturopathy, written as part of her work in alternative medicine and holistic health.</p><p>The remaining titles will be listed here as they are confirmed. Please <a class="text-link" href="/contact/">get in touch</a> to ask about the books or to arrange a talk.</p><p class="small-note">Books describe the author’s perspective on naturopathy and wellbeing. They are not a substitute for professional medical advice, diagnosis or treatment.</p></div></section></main>'''
+<section class="section wrap founder-bio"><img class="portrait" src="/assets/img/sadhna-portrait.jpg" alt="Dr Sadhna Dixit" width="720" height="960" loading="lazy"><div><p class="eyebrow">FEATURED</p><h2>A Cure to Cancer by Naturopathy</h2><p>One of five books by Sadhna on wellbeing and naturopathy, written as part of her work in alternative medicine and holistic health.</p><p>The remaining titles will be listed here as they are confirmed. Please <a class="text-link" href="/contact/">get in touch</a> to ask about the books or to arrange a talk.</p><p class="small-note">Books describe the author’s perspective on naturopathy and wellbeing. They are not a substitute for professional medical advice, diagnosis or treatment.</p></div></section></main>'''
 books = re.sub(r'<main id="main">.*?</main>', lambda m: main, books, count=1, flags=re.S)
 (root / 'books.html').write_text(books, encoding='utf-8', newline='\n')
 

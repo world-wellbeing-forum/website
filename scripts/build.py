@@ -54,6 +54,7 @@ for file in dist.rglob('*'):
     file.write_text(source,encoding='utf-8')
 (dist/'.nojekyll').touch()
 urls=['']+[r+'/' for r in routes]
-(dist/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\\n'+''.join('<url><loc>'+escape(site_url+'/'+r)+'</loc></url>\\n' for r in urls)+'</urlset>\\n',encoding='utf-8')
+sitemap='<?xml version="1.0" encoding="UTF-8"?>\\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\\n'+''.join('<url><loc>'+escape(site_url+'/'+r)+'</loc></url>\\n' for r in urls)+'</urlset>\\n'
+(dist/'sitemap.xml').write_text(sitemap,encoding='utf-8')
 (dist/'robots.txt').write_text('User-agent: *\\nAllow: /\\nSitemap: '+site_url+'/sitemap.xml\\n',encoding='utf-8')
 print(f'Built {len(files)} HTML documents. Homepage, assets and local links validated. Base path: {base_path or "/"}')

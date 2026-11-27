@@ -5,6 +5,7 @@ from urllib.parse import urlsplit, unquote
 import shutil, os, re
 from xml.sax.saxutils import escape
 root=Path(__file__).resolve().parents[1]
+nl=chr(10)
 routes=['about','our-work','health','environment','humanitarian','education-technology','global','founder','get-involved','contact','programs']
 for route in routes:
     source=root/(route+'.html')
@@ -43,7 +44,7 @@ for file,doc in docs.items():
         if not target.exists(): errors.append(f'{file.name}: missing {link}')
         elif url.fragment and target.resolve() in docs and url.fragment not in docs[target.resolve()].ids:
             errors.append(f'{file.name}: missing anchor {link}')
-if errors: raise SystemExit('\n'.join(errors))
+if errors: raise SystemExit(nl.join(errors))
 dist=root/'dist'
 if dist.exists(): shutil.rmtree(dist)
 dist.mkdir()
@@ -66,7 +67,7 @@ for file in dist.rglob('*'):
     file.write_text(source,encoding='utf-8')
 (dist/'.nojekyll').touch()
 urls=['']+[r+'/' for r in routes]
-sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join('<url><loc>'+escape(site_url+'/'+r)+'</loc></url>\n' for r in urls)+'</urlset>\n'
+sitemap='<?xml version="1.0" encoding="UTF-8"?>'+nl+'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+nl+''.join('<url><loc>'+escape(site_url+'/'+r)+'</loc></url>'+nl for r in urls)+'</urlset>'+nl
 (dist/'sitemap.xml').write_text(sitemap,encoding='utf-8')
-(dist/'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: '+site_url+'/sitemap.xml\n',encoding='utf-8')
+(dist/'robots.txt').write_text('User-agent: *'+nl+'Allow: /'+nl+'Sitemap: '+site_url+'/sitemap.xml'+nl,encoding='utf-8')
 print(f'Built {len(files)} HTML documents. Homepage, assets and local links validated. Base path: {base_path or "/"}')
